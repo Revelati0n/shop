@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/shop/';
 
+$config['tel'] = '+66 812345678';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -36,6 +37,7 @@ $config['base_url'] = 'http://localhost/shop/';
 |
 */
 $config['index_page'] = 'index.php';
+
 
 /*
 |--------------------------------------------------------------------------

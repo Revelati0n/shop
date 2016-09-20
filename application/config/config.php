@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/shop/';
 
+$config['sitename'] = 'GGWP';
 $config['tel'] = '+66 812345678';
 /*
 |--------------------------------------------------------------------------

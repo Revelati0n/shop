@@ -9,16 +9,23 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class userController extends CI_Controller {
+class Login extends CI_Controller {
+
+    public function __construct(){
+       parent::__construct();
+    }
+
     public function index()
     {
-
-
+      $this->load->model('userModel');
+      $this->load->view('header');
+      $this->load->view('login');
+      $this->load->view('footer');
     }
+
     public function login(){
         $data = json_decode(file_get_contents('php://input'));
         $this->load->model('userModel');
         echo $this->userModel->login($data->username, $data->password);
-
     }
 }

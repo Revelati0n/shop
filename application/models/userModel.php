@@ -11,39 +11,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class userModel extends CI_Model {
 
-
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * @return bool
-     */
     public  function isLogin(){
-        if($this->session->isLogin){
+        if(!empty($this->session->isLogin)){
             return true;
         }else{
             return false;
         }
     }
 
-    /**
-     * @return string
-     */
-    public function login(){
-        $username = $this->input->post('Username');
-        $password = $this->input->post('Password');
+    public function getUsername(){
+        return $this->session->isLogin[0]->Username;
+    }
 
-        if(true){
-            return json_encode();
+    public function login($username = null, $password = null){
+        $getLogin = $this->db->where(array('Username' => $username, 'Password' => $password))->get('accounts')->result();
+        if(!empty($getLogin)){
+            $this->session->set_userdata('isLogin', $getLogin);
+            return json_encode(array('responseCode' => 1));
         }else{
-            return json_encode();
+            return json_encode(array('responseCode' => 0));
         }
     }
 
-    public function get_last_ten_entries()
+    public function register()
     {
-        return json_encode();
+
     }
 }

@@ -5,13 +5,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="<?=base_url();?>assets/css/animate.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/pace.min.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap-theme.css"/>
-	<link rel="stylesheet" href="<?=base_url();?>assets/css/stylesheet.css"/>
-	<link rel="stylesheet" href="<?=base_url();?>assets/css/animate.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/pnotify.min.css"/>
+	<link rel="stylesheet" href="<?=base_url();?>assets/css/stylesheet.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/sweetalert.min.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/summernote.css"/>
 	<script src="<?=base_url();?>assets/js/jquery.min.js" type="text/javascript"></script>
@@ -32,13 +32,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php
 				if(!$this->userModel->isLogin()):
 			?>
-				<li><a href="<?=base_url();?>/Register"><i class="fa fa-edit"></i> สมัครสมาชิก</a></li>
-				<li><a href="<?=base_url();?>/Login"><i class="fa fa-sign-in"></i> เข้าสู่ระบบ</a></li>
+<!--				<li><a href="--><?//=base_url();?><!--Register"><i class="fa fa-edit"></i> สมัครสมาชิก</a></li>-->
+<!--				<li><a href="--><?//=base_url();?><!--Login"><i class="fa fa-sign-in"></i> เข้าสู่ระบบ</a></li>-->
+
 			<?php
 				else :
 			?>
-				<li><a href="<?=base_url();?>/Account"><i class="fa fa-user"></i> บัญชีผู้ใช้</a></li>
-				<li><a href="<?=base_url();?>/Logout"><i class="fa fa-sign-out"></i> ออกจากระบบ</a></li>
+			<li><a href="<?=base_url();?>Account"><i class="fa fa-user"></i> <?=$this->userModel->getUsername();?> </a></li>
+			<li><a href="<?=base_url();?>Account" style="color:green;"><i class="fa fa-envelope"></i> มีการแจ้งเตือนใหม่ </a></li>
+			<li><a href="<?=base_url();?>Cart"><i class="fa fa-shopping-cart"></i> ตะกร้าสินค้า </a></li>
+			<li><a href="<?=base_url();?>Checkout"><i class="fa fa-check"></i> ชำระเงิน </a></li>
+			<li><a href="<?=base_url();?>Logout" style="color:red;"><i class="fa fa-sign-out"></i> ออกจากระบบ </a></li>
 			<?php
 				endif;
 			?>
@@ -49,21 +53,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <header>
   <div class="container">
     <div class="row">
-      <div class="col-sm-4">
-        <div id="logo">			
+      <div class="col-sm-8">
+        <div id="logo">
 			<a href="<?=base_url();?>"><img src="<?=base_url();?>assets/imgs/logo.png" class="img-responsive" /></a>
         </div>
       </div>
 	  <div class="col-sm-4">
-		<div id="search" class="input-group">
-		  <input type="text" name="search" placeholder="ค้นหา" class="form-control input-lg" />
-		  <span class="input-group-btn">
-			<button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
-		  </span>
-		</div>
-	  </div>
-	  <div class="col-sm-4">
-	  
+
 	  </div>
     </div>
   </div>

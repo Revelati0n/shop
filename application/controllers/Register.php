@@ -12,19 +12,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Register extends CI_Controller {
     public function __construct(){
        parent::__construct();
+       $this->load->model('userModel');
     }
 
     public function index()
     {
-      $this->load->model('userModel');
-      $this->load->view('header');
-      $this->load->view('register');
-      $this->load->view('footer');
+      if(!$this->userModel->isLogin()){
+        $this->load->view('header');
+        $this->load->view('register');
+        $this->load->view('footer');
+      }else{
+          redirect(base_url());
+      }
     }
 
-    public function register(){
-        $data = json_decode(file_get_contents('php://input'));
-        $this->load->model('userModel');
-        //echo $this->userModel->login($data->username, $data->password);
+    public function Register(){
+      if(!$this->userModel->isLogin()){
+          $data = json_decode(file_get_contents('php://input'));
+            if(!empty($data)){
+              echo $this->userModel->register($data->username, $data->password, $data->repassword, $data->email);
+            }
+        }else{
+            redirect(base_url());
+        }
     }
 }

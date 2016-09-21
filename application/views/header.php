@@ -29,23 +29,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
         <li><a href=""><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md"> <?=$this->config->item("tel");?> </span></li>
+			<?php if(!$this->userModel->isLogin()): ?>
+				<li><a href="<?=base_url();?>Register"><i class="fa fa-edit"></i> สมัครสมาชิก</a></li>
+				<li><a href="<?=base_url();?>Login"><i class="fa fa-sign-in"></i> เข้าสู่ระบบ</a></li>
 			<?php
-				if(!$this->userModel->isLogin()):
+			else :
+			if(!$this->userModel->isMember()):
 			?>
-<!--				<li><a href="--><?//=base_url();?><!--Register"><i class="fa fa-edit"></i> สมัครสมาชิก</a></li>-->
-<!--				<li><a href="--><?//=base_url();?><!--Login"><i class="fa fa-sign-in"></i> เข้าสู่ระบบ</a></li>-->
-
-			<?php
-				else :
-			?>
-			<li><a href="<?=base_url();?>Account"><i class="fa fa-user"></i> <?=$this->userModel->getUsername();?> </a></li>
-			<li><a href="<?=base_url();?>Account" style="color:green;"><i class="fa fa-envelope"></i> มีการแจ้งเตือนใหม่ </a></li>
-			<li><a href="<?=base_url();?>Cart"><i class="fa fa-shopping-cart"></i> ตะกร้าสินค้า </a></li>
-			<li><a href="<?=base_url();?>Checkout"><i class="fa fa-check"></i> ชำระเงิน </a></li>
-			<li><a href="<?=base_url();?>Logout" style="color:red;"><i class="fa fa-sign-out"></i> ออกจากระบบ </a></li>
-			<?php
-				endif;
-			?>
+				<li><a href="#"><i class="fa fa-user"></i> <?=$this->userModel->getUsername();?> </a></li>
+				<li><a href="<?=base_url();?>admin/" style="color:green;"><i class="fa fa-tachometer"></i> จัดการระบบ </a></li>
+				<li><a href="<?=base_url();?>Logout" style="color:red;"><i class="fa fa-sign-out"></i> ออกจากระบบ </a></li>
+			<?php	else:	?>
+				<li><a href="<?=base_url();?>Account"><i class="fa fa-user"></i> <?=$this->userModel->getUsername();?> </a></li>
+				<li><a href="<?=base_url();?>Account" style="color:green;"><i class="fa fa-envelope"></i> มีการแจ้งเตือนใหม่ </a></li>
+				<li><a href="<?=base_url();?>Cart"><i class="fa fa-shopping-cart"></i> ตะกร้าสินค้า </a></li>
+				<li><a href="<?=base_url();?>Checkout"><i class="fa fa-check"></i> ชำระเงิน </a></li>
+				<li><a href="<?=base_url();?>Logout" style="color:red;"><i class="fa fa-sign-out"></i> ออกจากระบบ </a></li>
+			<?php	endif; endif;	?>
     </ul>
     </div>
   </div>
@@ -78,18 +78,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		  	if(count($Category->categoryID) != 0) {
 				$categoryParents = $this->db->where('categoryID', $Category->categoryID)->get('categoryParent')->result();
 				if(count($categoryParents) > 0){
-					echo '<li class="dropdown"><a href="/Categorys/'.$Category->categoryID.'" class="dropdown-toggle" data-toggle="dropdown">'.$Category->categoryName.'</a>';
+					echo '<li class="dropdown"><a href="'.base_url().'Categorys/'.$Category->categoryID.'" class="dropdown-toggle" data-toggle="dropdown">'.$Category->categoryName.'</a>';
 					echo '<div class="dropdown-menu">';
             		echo '<div class="dropdown-inner">';
 					echo '<ul class="list-unstyled">';
 					foreach ($categoryParents as $categoryParent) {
-						echo '<li><a href="'.base_url().'/Categorys/'.$Category->categoryID.'/'.$categoryParent->categoryParentID.'">'.$categoryParent->categoryParentName.'</a></li>';
+						echo '<li><a href="'.base_url().'Categorys/'.$Category->categoryID.'/'.$categoryParent->categoryParentID.'">'.$categoryParent->categoryParentName.'</a></li>';
 					}
 					echo '</ul></div>';
-					echo '<a href="'.base_url().'/Categorys/'.$Category->categoryID.'" class="see-all"> ดู '.$Category->categoryName.' ทั้งหมด</a> </div>';
+					echo '<a href="'.base_url().'Categorys/'.$Category->categoryID.'" class="see-all"> ดู '.$Category->categoryName.' ทั้งหมด</a> </div>';
 					echo '</li>';
 				}else{
-					echo '<li><a href="'.base_url().'/Categorys/'.$Category->categoryID.'">'.$Category->categoryName.'</a></li>';
+					echo '<li><a href="'.base_url().'Categorys/'.$Category->categoryID.'">'.$Category->categoryName.'</a></li>';
 				}
 			}
 		  }

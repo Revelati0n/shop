@@ -38,7 +38,7 @@ app.controller('loginCtrl', function($scope, $timeout, $http) {
       username: $scope.username,
       password: $scope.password
     };
-    $http.post('<?=base_url();?>userController/login', data).then(function successCallback(response) {
+    $http.post('<?=base_url();?>Login/Login', data).then(function successCallback(response) {
       console.info(response);
       if(response.data.responseCode == 1){
         new PNotify({
@@ -52,6 +52,9 @@ app.controller('loginCtrl', function($scope, $timeout, $http) {
             out_class: 'slideOutUp'
           }
         });
+        setTimeout(function(){
+          location.reload();
+        }, 2000);
       }else{
         new PNotify({
           title: 'ระบบสมาชิก',
@@ -66,7 +69,7 @@ app.controller('loginCtrl', function($scope, $timeout, $http) {
         });
       }
     }, function errorCallback(response) {
-      localtion.reload();
+      location.reload();
     });
   }
 });

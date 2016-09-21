@@ -17,8 +17,6 @@ class userController extends CI_Controller {
     }
     public function login(){
         $data = json_decode(file_get_contents('php://input'));
-        $this->load->model('userModel');
-        echo $this->userModel->login($data->username, $data->password);
 
     }
 }

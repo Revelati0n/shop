@@ -13,19 +13,28 @@ class Login extends CI_Controller {
 
     public function __construct(){
        parent::__construct();
+       $this->load->model('userModel');
     }
 
     public function index()
     {
-      $this->load->model('userModel');
-      $this->load->view('header');
-      $this->load->view('login');
-      $this->load->view('footer');
+        if(!$this->userModel->isLogin()){
+          $this->load->view('header');
+          $this->load->view('login');
+          $this->load->view('footer');
+        }else{
+            redirect(base_url());
+        }
     }
 
-    public function login(){
-        $data = json_decode(file_get_contents('php://input'));
-        $this->load->model('userModel');
-        echo $this->userModel->login($data->username, $data->password);
+    public function Login(){
+      if(!$this->userModel->isLogin()){
+          $data = json_decode(file_get_contents('php://input'));
+            if(!empty($data)){
+              echo $this->userModel->login($data->username, $data->password);
+            }
+        }else{
+            redirect(base_url());
+        }
     }
 }

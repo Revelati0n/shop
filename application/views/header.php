@@ -9,19 +9,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/pace.min.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap.css"/>
-	<link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap-theme.css"/>
+	<link rel="stylesheet" href="<?=base_url();?>assets/css/fileinput.min.css"/>
+	<!-- <link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap-theme.css"/> -->
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/pnotify.min.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/stylesheet.css"/>
 	<link rel="stylesheet" href="<?=base_url();?>assets/css/sweetalert.min.css"/>
-	<link rel="stylesheet" href="<?=base_url();?>assets/css/summernote.css"/>
 	<script src="<?=base_url();?>assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="<?=base_url();?>assets/js/pace.min.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/js/plugins/canvas-to-blob.min.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/js/plugins/sortable.min.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/js/plugins/purify.min.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/js/fileinput.min.js" type="text/javascript"></script>
 	<script src="<?=base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="<?=base_url();?>assets/js/angular.min.js" type="text/javascript"></script>
 	<script src="<?=base_url();?>assets/js/app.js" type="text/javascript"></script>
 	<script src="<?=base_url();?>assets/js/pnotify.min.js" type="text/javascript"></script>
 	<script src="<?=base_url();?>assets/js/sweetalert.min.js" type="text/javascript"></script>
-	<script src="<?=base_url();?>assets/js/summernote.min.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/js/locales/theme.js" type="text/javascript"></script>
+	<script src="<?=base_url();?>assets/js/locales/th.js" type="text/javascript"></script>
+
 </head>
 <body ng-app="App" class="">
 <nav id="top">

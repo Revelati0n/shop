@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     theme: "fa",
 		language: "th",
 		uploadUrl: "upload/do_upload",
+		uploadAsync: true,
 		allowedFileExtensions: ["jpg", "png", "gif"]
 });
 	</script>
